@@ -1,0 +1,24 @@
+@import './_layout';
+
+@import './_reset';
+
+.error {
+    svg {
+        margin: auto;
+    }
+}
+
+.el-loading-mask {
+    svg {
+        margin: auto;
+    }
+}
+
+// 切换画面 渐入渐出
+.page-enter-active, .page-leave-active {
+    transition: opacity .3s;
+}
+  
+.page-enter, .page-leave-active {
+opacity: 0;
+}

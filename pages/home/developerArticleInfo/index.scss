@@ -1,0 +1,331 @@
+.page-article-info {
+    padding-bottom: 24px;
+
+    .module-content {
+        margin-bottom: 20px;
+
+        .left {
+            width: 751px;
+            border-radius: 8px;
+
+            .box-content {
+                margin-bottom: 18px;
+                padding: 28px 50px;
+                background-color: #fff;
+
+                .box-title {
+                    margin-bottom: 9px;
+                    line-height: 32px;
+                    color: #252525;
+                    font-size: 26px;
+                    font-weight: 600;
+                }
+
+                .box-msg {
+                    font-size: 12px;
+                    color: #9B9B9B;
+
+                    p:first-child {
+                        margin-right: 10px;
+                    }
+                }
+
+                .box-cover {
+                    margin: 25px 0 31px;
+                    padding-top: 34px;
+                    width: 100%;
+                    border-top: 1px solid #f7f7f7;
+                }
+            }
+
+            .module-comment {
+                padding: 21px 50px;
+                background-color: #fff;
+
+                .box-title {
+                    margin-bottom: 21px;
+                    line-height: 21px;
+                    color: #171321;
+                    font-size: 15px;
+                    font-weight: 600;
+
+                    img {
+                        margin-right: 16px;
+                        width: 22px;
+                        height: 19px;
+                    }
+                }
+
+                .box-input {
+                    font-size: 12px;
+
+                    &::placeholder {
+                        color: #9B9B9B;
+                        font-size: 12px;
+                    }
+                }
+
+                .box-no-login {
+                    height: 70px;
+                    border: 1px solid #e9e9e9;
+                    border-radius: 8px;
+                    color: #9B9B9B;
+                    font-size: 12px;
+                    background: #f0f2f3;
+
+                    .btn-login {
+                        margin: 0 5px 2px;
+                        width: 44px;
+                        height: 24px;
+                        border-radius: 12px;
+                        color: #171321;
+                        background: #fca326;
+                        cursor: pointer;
+                    }
+                }
+
+                .box-comment {
+                    margin-top: 15px;
+
+                    .comment-item {
+                        padding-top: 22px;
+
+                        &:not(:last-child) {
+                            .item-right {
+                                border-bottom: 1px solid #f7f7f7;
+                            }
+                        }
+
+                        .avatar {
+                            margin-right: 21px;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50px;
+                        }
+
+                        .item-right {
+                            flex: 1;
+                            padding-bottom: 20px;
+                        }
+
+                        .item-name {
+                            margin-bottom: 6px;
+                            color: #606060;
+                            font-size: 10px;
+                        }
+
+                        .item-comment {
+                            margin-bottom: 8px;
+                            color: #252525;
+                            font-size: 12px;
+                        }
+
+                        .item-other {
+                            line-height: 10px;
+                            color: #9B9B9B;
+                            font-size: 10px;
+                        }
+
+                        .item-like {
+                            margin: 0 21px 0 16px;
+
+                            img {
+                                margin-right: 6px;
+                                width: 11px;
+                                height: 13px;
+                            }
+                        }
+                    }
+
+                    .small-item {
+                        padding: 15px 0 0;
+
+                        .small-avatar {
+                            margin-right: 11px;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50px;
+                        }
+
+                        .item-right {
+                            flex: 1;
+                        }
+
+                        .small-name {
+                            line-height: 30px;
+
+                            span:first-child {
+                                margin-right: 21px;
+                            }
+                        }
+                    }
+                }
+
+                .btn-release {
+                    margin-top: 13px;
+                    width: 105px;
+                    height: 34px;
+                    border-radius: 17px;
+                    color: #171321;
+                    background: #fca326;
+                    cursor: pointer;
+                }
+
+                .box-empty {
+                    margin: 66px 0 62px;
+
+                    img {
+                        margin-bottom: 7px;
+                        width: 44px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+
+        .right {
+            width: 250px;
+
+            .box-user {
+                padding: 17px 0;
+                border-bottom: 1px solid #f7f7f7;
+
+                img {
+                    margin-right: 12px;
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50px;
+                }
+            }
+
+            .box-btn {
+                padding: 16px 0 17px;
+
+                .btn-item {
+                    padding: 0 26px 0 22px;
+                    width: 101px;
+                    height: 34px;
+                    border: 0.5px solid #d7d7d7;
+                    border-radius: 17.5px;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+
+        .module-x {
+            margin-bottom: 18px;
+            padding: 0 16px;
+            border-radius: 8px;
+            background-color: #fff;
+
+            .box-title {
+                padding: 13px 0 10px;
+                line-height: 21px;
+                border-bottom: 1px solid #f7f7f7;
+                color: #171321;
+                font-size: 15px;
+                font-weight: 600;
+
+                img {
+                    margin-right: 6px;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            .share-item {
+                padding: 14px 70px 17px;
+
+                .bshare-weixin {
+                    width: 20px;
+                    height: 17px;
+                    background-image: url('~@/assets/image/developer/wechat.png') !important;
+                }
+
+                .bshare-sinaminiblog {
+                    width: 20px;
+                    height: 17px;
+                    background: url('~@/assets/image/developer/weibo.png') !important;
+                }
+            }
+
+            .item {
+                padding: 14px 0 9px;
+                cursor: pointer;
+
+                .cover {
+                    width: 89px;
+                    height: 50px;
+                }
+
+                .item-right {
+                    width: 118px;
+                }
+
+                p {
+                    margin-bottom: 7px;
+                    color: #171321;
+                    font-size: 11px;
+                }
+
+                .foot {
+                    color: #9B9B9B;
+                    font-size: 12px;
+
+                    .look {
+                        display: block;
+                        margin: 0 5px 2px;
+                        width: 15px;
+                        height: 9px;
+                    }
+
+                    .like {
+                        display: block;
+                        margin: 0 5px 2px 18px;
+                        width: 11px;
+                        height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-article-info {
+        .module-content {
+            width: 100%;
+
+            .left {
+                margin-bottom: 18px;
+                width: 100%;
+
+                .box-content {
+                    padding: 28px 25px;
+
+                    .box-title {
+                        line-height: 22px;
+                        font-size: 16px;
+                    }
+
+                    .box-cover {
+                        margin: 25px 0;
+                        padding-top: 25px;
+                    }
+                }
+
+                .module-comment {
+                    padding: 21px 25px;
+                }
+            }
+
+            .right {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,169 @@
+.page-activity-info {
+    .module-content {
+        margin-bottom: 48px;
+
+        .left {
+            padding: 25px 50px 10px 51px;
+            width: 751px;
+            border-radius: 8px;
+            background-color: #fff;
+
+            .box-title {
+                margin-bottom: 26px;
+                color: #252525;
+                font-size: 26px;
+                font-weight: 600;
+
+                p {
+                    line-height: 32px;
+                    width: 490px;
+                }
+
+                .btn-apply {
+                    padding: 7px 23px 7px 26px;
+                    line-height: 14px;
+                    border-radius: 17px;
+                    color: #171321;
+                    font-size: 14px;
+                    background: #fca326;
+                    cursor: pointer;
+                }
+            }
+
+            .box-msg {
+                padding: 15px 27px 1px;
+                border-radius: 5px;
+                font-size: 12px;
+                background: #f9f9f9;
+
+                p {
+                    margin-bottom: 15px;
+                    color: #9B9B9B;
+                }
+
+                span {
+                    color: #171321;
+                }
+            }
+
+            .box-cover {
+                margin: 19px 0 16px;
+                width: 100%;
+            }
+        }
+
+        .right {
+            width: 250px;
+        }
+
+        .module-x {
+            margin-bottom: 18px;
+            padding: 0 16px;
+            border-radius: 8px;
+            background-color: #fff;
+
+            .box-title {
+                padding: 13px 0 10px;
+                line-height: 21px;
+                border-bottom: 1px solid #f7f7f7;
+                color: #171321;
+                font-size: 15px;
+                font-weight: 600;
+
+                img {
+                    margin-right: 6px;
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            .share-item {
+                padding: 14px 70px 17px;
+
+                .bshare-weixin {
+                    width: 20px;
+                    height: 17px;
+                    background-image: url('~@/assets/image/developer/wechat.png') !important;
+                }
+
+                .bshare-sinaminiblog {
+                    width: 20px;
+                    height: 17px;
+                    background: url('~@/assets/image/developer/weibo.png') !important;
+                }
+            }
+
+            .item {
+                padding: 14px 0 9px;
+                cursor: pointer;
+
+                .cover {
+                    width: 89px;
+                    height: 50px;
+                }
+
+                .item-right {
+                    width: 118px;
+                }
+
+                p {
+                    margin-bottom: 7px;
+                    color: #171321;
+                    font-size: 11px;
+                }
+
+                .foot {
+                    color: #9B9B9B;
+                    font-size: 12px;
+
+                    .look {
+                        display: block;
+                        margin: 0 5px 2px;
+                        width: 15px;
+                        height: 9px;
+                    }
+
+                    .like {
+                        display: block;
+                        margin: 0 5px 2px 18px;
+                        width: 11px;
+                        height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-activity-info {
+        .module-content {
+            margin-bottom: 20px;
+
+            .left {
+                margin-bottom: 18px;
+                padding: 15px;
+                width: 100%;
+
+                .box-title {
+                    line-height: 24px;
+                    font-size: 18px;
+                    font-weight: 600;
+
+                    p {
+                        margin-bottom: 18px;
+                        width: 100%;
+                    }
+                }
+
+                .box-msg {
+                    padding: 15px;
+                }
+            }
+
+            .right {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.component-goto-top {
+    img {
+        position: fixed;
+        right: calc((100% - 1196px) / 2);
+        bottom: 45px;
+        display: block;
+        width: 43px;
+        height: 43px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    min-height: 100%;
+    line-height: 1.15;
+    font-size: 10px;
+    zoom: 1;
+}
+
+body {
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+// img,
+// video {
+//     max-width: 100%;
+//     max-height: 100%;
+//     vertical-align: middle;
+
+//     &.auto-height {
+//         max-height: initial;
+//     }
+// }
+
+// svg {
+//     display: inline-block;
+// }
+
+a {
+    color: inherit;
+    -webkit-touch-callout: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:link {
+        color: inherit;
+        text-decoration: none !important;
+    }
+
+    &:visited {
+        color: inherit;
+        text-decoration: none !important;
+    }
+
+    &:hover {
+        color: inherit;
+        text-decoration: none !important;
+    }
+
+    &:active {
+        color: inherit;
+        text-decoration: none !important;
+    }
+}
+
+// fieldset {
+//     border: 1px solid #ccc;
+
+//     &>legend {
+//         padding: 0 .2rem;
+//         color: #aaa;
+//     }
+// }
+
+
+// button {
+//     outline: none !important;
+// }
+
+.mobile-style {
+    display: none;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+p {
+    line-height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    // html {
+    //     font-size: 7px;
+    // }
+
+    .mobile-style {
+        display: block;
+    }
+
+    .pc-style {
+        display: none;
+    }
+}

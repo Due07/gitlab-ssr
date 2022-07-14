@@ -1,0 +1,38 @@
+.activity-one,
+.activity-two,
+.activity-there,
+.activity-four,
+.activity-five {
+    #eventContentAreaMain * {
+        max-width: 100% !important;
+        font-style: normal;
+        word-wrap: break-word !important;
+    }
+
+    .event-intro.tab-content {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        border: solid 1px #eeeeee;
+        padding: 30px 39px;
+    }
+
+    .event-intro p {
+        font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+        margin: 5px 0;
+    }
+
+    #eventContentAreaMain img {
+        border-style: none;
+    }
+
+
+    #eventContentAreaMain article,
+    #eventContentAreaMain aside,
+    #eventContentAreaMain footer,
+    #eventContentAreaMain header,
+    #eventContentAreaMain nav,
+    #eventContentAreaMain section {
+        display: block;
+    }
+}

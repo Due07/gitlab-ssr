@@ -1,0 +1,62 @@
+.register {
+    .agreement {
+        margin-top: 23px;
+        font-size: 12px;
+        line-height: 17px;
+
+        @media screen and (max-width: 768px) {
+        
+        }
+
+        &.is-error {
+            margin-bottom: 20px;
+
+            .el-form-item__error {
+                bottom: -8px;
+            }
+        }
+
+        .tips {
+            color: #FCA326;
+        
+            @media screen and (max-width: 768px) {
+            
+            }
+        }
+
+        // 勾选框
+        .el-checkbox {
+            color: #171321;
+            border-color: #979797;
+
+            .el-checkbox__inner {
+                border-radius: 50%;
+    
+                @media screen and (max-width: 768px) {
+                
+                }
+                &:hover {
+                    border-color: #858585;
+                }
+            }
+
+            &.is-checked, &.is-focus {
+                .el-checkbox__inner {
+                    background: #FFFFFF;
+                    border-color: #979797;
+
+                    &::after {
+                        border-color: #979797;
+                    }
+                }
+
+                .el-checkbox__label {
+                    color: #171321;
+                }
+            }
+            
+        }
+
+        
+    }
+}

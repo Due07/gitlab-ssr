@@ -1,0 +1,149 @@
+.article-there {
+
+    .cooked,
+    .d-editor-preview {
+        word-wrap: break-word;
+        line-height: var(--line-height-large);
+    }
+
+    .cooked {
+        overflow: hidden;
+        padding: 1em 11px 0.25em 11px;
+    }
+
+    .cooked h2,
+    .d-editor-preview h2 {
+        color: #222222;
+        font-size: 19px;
+    }
+
+    .cooked h1,
+    .cooked h2,
+    .cooked h3,
+    .cooked h4,
+    .cooked h5,
+    .cooked h6,
+    .d-editor-preview h1,
+    .d-editor-preview h2,
+    .d-editor-preview h3,
+    .d-editor-preview h4,
+    .d-editor-preview h5,
+    .d-editor-preview h6 {
+        margin: 30px 0 10px;
+        line-height: var(--line-height-medium);
+    }
+
+    .cooked h2 {
+        color: #222222;
+        font-weight: bold;
+    }
+
+    p {
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .cooked ul,
+    .cooked ol,
+    .d-editor-preview ul,
+    .d-editor-preview ol {
+        padding-left: 1.25em;
+    }
+
+    ul {
+        margin: 15px 0 15px 18px;
+        padding-left: 18px;
+    }
+
+    li {
+        list-style-type: style auto;
+    }
+
+    ul,
+    li {
+        list-style-type: disc;
+    }
+
+    li::marker {
+        unicode-bidi: isolate;
+        font-variant-numeric: tabular-nums;
+        text-transform: none;
+        text-indent: 0px !important;
+        text-align: start !important;
+        text-align-last: start !important;
+    }
+
+    pre {
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0px;
+    }
+
+    pre code {
+        word-wrap: normal;
+        display: block;
+        padding: 0.5em;
+        color: #434343;
+        background: #f9f9f9;
+        max-height: 500px;
+        overflow-x: scroll;
+    }
+
+    .hljs {
+        display: block;
+        padding: 0.5em;
+        color: var(--primary-very-high);
+    }
+
+    .md-table {
+        overflow-y: auto;
+        margin: 1em 0;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    tr {
+        border-bottom: 1px solid #e9e9e9;
+    }
+
+    .hljs-attribute,
+    .css .hljs-keyword,
+    .hljs-variable,
+    .lisp .hljs-body {
+        color: #008080;
+    }
+
+    .hljs-number,
+    .ruby .hljs-constant {
+        color: #008080;
+    }
+
+    .cooked h3,
+    .d-editor-preview h3 {
+        color: #222222;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    .hljs-comment,
+    .hljs-doctag {
+        color: #998;
+        font-style: italic;
+    }
+
+    .hljs-string,
+    .hljs-tag .hljs-string,
+    .tex .hljs-formula {
+        color: #d14;
+    }
+
+    .hljs-built_in,
+    .lisp .hljs-title,
+    .clojure .hljs-built_in,
+    .hljs-builtin-name {
+        color: #0ddaff;
+    }
+}

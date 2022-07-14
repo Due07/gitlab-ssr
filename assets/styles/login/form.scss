@@ -1,0 +1,131 @@
+.login-form {
+    min-height: 754px;
+    margin: auto;
+    width: 400px;
+
+    @media screen and (max-width: 768px) {
+        width: 88%;
+    }
+
+    .text-center {
+       @media screen and (max-width: 768px) {
+       
+       }
+    }
+
+    .login-form-form {
+        .code-item {
+            .el-form-item__content {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+                &::before, &::after {
+                    display: none;
+                }
+            }
+
+            // 验证码的提示
+            .el-form-item__error {
+                left: 118px;
+
+                @media screen and (max-width: 768px) {
+                
+                }
+            }
+        }
+
+        .country-code {
+            width: auto;
+
+            @media screen and (max-width: 768px) {
+            
+            }
+            .el-input {
+                // min-width: 57px;
+                // max-width: 96px;
+                width: 110px;
+                font-size: 12px;
+                line-height: 17px;
+                color: #9B9B9B;
+
+                @media screen and (max-width: 768px) {
+                    width: 92px;
+                }
+
+                .el-input__inner {
+                    padding: 0 20px 0 10px;
+
+                    @media screen and (max-width: 768px) {
+                    
+                    }
+                }
+
+                .el-input__suffix {
+                    right: 6px;
+
+                    // 下拉图标
+                    .el-input__icon {
+                        width: 10px;
+
+                        @media screen and (max-width: 768px) {
+                        
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 768px) {
+                
+                }
+            }
+        }
+
+        .code {
+            width: 148px;
+            
+            @media screen and (max-width: 768px) {
+            
+            }
+        }
+
+        .code-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            width: 126px;
+            font-size: 12px;
+            line-height: 16px;
+            border-radius: 5px;
+            background-color: #FCA326;
+            color: #171321;
+
+            @media screen and (max-width: 768px) {
+                width: 108px;
+            }
+
+            &.active {
+                background-color: #dddddd;
+                color: #9B9B9B;
+            }
+        }
+
+        .password-tips {
+            font-size: 12px;
+            line-height: 17px;
+            color: #9B9B9B;
+
+            @media screen and (max-width: 768px) {
+            
+            }
+        }
+    }
+
+    .submit-btn {
+        margin-top: 48px;
+        
+        @media screen and (max-width: 768px) {
+            
+        }
+    }
+}

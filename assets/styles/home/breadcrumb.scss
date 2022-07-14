@@ -1,0 +1,14 @@
+.component-breadcrumb {
+    padding: 26px 0;
+    font-size: 12px;
+
+    .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+        color: #9B9B9B;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .component-breadcrumb.container {
+        padding: 26px 15px !important;
+    }
+}

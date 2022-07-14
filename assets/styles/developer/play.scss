@@ -1,0 +1,165 @@
+.component-developer-play {
+    padding: 0 18px 20px 19px;
+    border-radius: 8px;
+    background-color: #fff;
+
+    .box-type {
+        .type-item {
+            margin-right: 44px;
+            padding: 14px 0 12px;
+            border-bottom: 3px solid #fff;
+            color: #7e7e7e;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+
+            &.active {
+                color: #171321;
+                border-bottom: 3px solid #FCA326;
+            }
+        }
+
+        .type-dropdown {
+            position: relative;
+            padding: 14px 0 12px;
+            line-height: 12px;
+            color: #7e7e7e;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+
+            img {
+                margin-left: 6px;
+                width: 12px;
+                height: 7px;
+                transition: transform 0.5s;
+
+                &.show {
+                    transform: rotate(180deg);
+                }
+            }
+
+            ul {
+                position: absolute;
+                top: 33px;
+                right: -17px;
+                padding: 5px 0 7px;
+                width: 90px;
+                border-radius: 8px;
+                box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+                background-color: #fff;
+                z-index: 99;
+                transition: display 3s;
+
+                li {
+                    padding: 7px 0;
+                    color: #171321;
+                    font-size: 12px;
+                    text-align: center;
+                    list-style: none;
+
+                    &.active {
+                        color: #FCA326;
+                    }
+                }
+            }
+        }
+    }
+
+    .box-content {
+        padding: 18px 0 0;
+        border-top: 1px solid #f7f7f7;
+
+        .item {
+            display: inline-block;
+            position: relative;
+            padding: 0 0 28px;
+            width: 160px;
+            height: 181px;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:not(:nth-child(3n)) {
+                margin-right: calc((100% - 480px) / 2);
+            }
+
+            .cover {
+                margin-bottom: 7px;
+                width: 160px;
+                height: 90px;
+            }
+
+            .item-title {
+                padding: 0 7px;
+                color: #171321;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .foot {
+                position: absolute;
+                right: 7px;
+                bottom: 28px;
+                left: 7px;
+                color: #9B9B9B;
+                font-size: 12px;
+
+                .look {
+                    display: block;
+                    margin: 0 5px 2px;
+                    width: 15px;
+                    height: 9px;
+                }
+
+                .like {
+                    display: block;
+                    margin: 0 5px 2px 18px;
+                    width: 11px;
+                    height: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .component-developer-play {
+        padding: 0 10px 20px;
+
+        .box-type {
+            .type-item {
+                margin-right: 10px;
+                font-size: 10px;
+                font-weight: 500;
+            }
+
+            .type-dropdown {
+                margin-bottom: 2px;
+                line-height: 10px;
+                font-size: 10px;
+                font-weight: 500;
+            }
+        }
+
+        .box-content {
+            padding: 18px 0 0;
+            border-top: 1px solid #f7f7f7;
+
+            .item {
+                margin-right: 0;
+                padding: 0 0 28px;
+                width: 150px;
+                height: 170px;
+
+                &:not(:nth-child(2n)) {
+                    margin-right: calc((100% - 300px) / 2);
+                }
+
+                .cover {
+                    width: 150px;
+                    height: 85px;
+                }
+            }
+        }
+    }
+}

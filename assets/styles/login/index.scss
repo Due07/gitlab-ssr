@@ -1,0 +1,99 @@
+h3 {
+    color: #171321;
+    margin: 48px 0 35px;
+    font-size: 30px;
+    line-height: 42px;
+    @media screen and (max-width: 768px) {
+
+    }
+}
+
+.submit-btn {
+    text-align: center;
+    
+    @media screen and (max-width: 768px) {
+        
+    }
+    .el-button {
+        border: 0;
+        background-color: #FCA326;
+        width: 120px;
+        height: 42px;
+        border-radius: 21px;
+        color: #171321;
+        font-size: 16px;
+        line-height: 22px;
+
+        @media screen and (max-width: 768px) {
+        
+        }
+    }
+}
+
+// 密码框的小眼睛横线
+.password-input {
+    .el-input__icon {
+        &.hide::after {
+            content: "\005c";
+            position: absolute;
+            left: 50%;
+            transform-origin: 50% 144%;
+            transform: translateX(-50%) rotateZ(-30deg);
+            width: 14px;
+            height: 14px;
+
+            @media screen and (max-width: 768px) {
+            
+            }
+        }
+    }
+}
+
+.el-textarea,
+.el-input {
+    border-radius: 5px;
+}
+
+.el-textarea,
+.el-textarea__inner,
+.el-textarea .el-input__count,
+.el-input,
+.el-input__inner {
+    background-color: #F7F7F7;
+    border-color: #F7F7F7;
+}
+
+.el-form-item {
+    margin-bottom: 18px;
+
+    @media screen and (max-width: 768px) {
+    
+    }
+    &.is-error {
+        margin-bottom: 43px;
+    }
+
+    .el-form-item__error {
+        top: initial;
+        bottom: -26px;
+    }
+}
+
+
+// 提示字
+.el-input::placeholder {
+    color: #9B9B9B;
+}
+
+.el-select {
+    .el-input {
+        .el-select__caret {
+            transform-origin: 60% center;
+        }
+    }
+}
+
+// 焦点色
+// .el-input__inner:focus{
+//     // border-color: initial;
+// }

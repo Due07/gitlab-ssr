@@ -1,0 +1,204 @@
+.page-search {
+    padding-bottom: 20px;
+    min-height: calc(100vh - 131px);
+
+    .container {
+        margin-top: 10px;
+        padding: 37px 0;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    .box-content {
+        margin: 0 auto;
+        width: 600px;
+
+        .box-input {
+            border: 1px solid #f7f7f7;
+            border-radius: 21px;
+            overflow: hidden;
+
+            .el-input {
+                .el-input__inner {
+                    padding-left: 27px;
+                    height: 100%;
+                    border: none;
+                    color: #171321;
+                    background-color: #f7f7f7;
+
+                    &::placeholder {
+                        color: #9B9B9B;
+                    }
+                }
+            }
+
+            .btn-search {
+                width: 130px;
+                height: 42px;
+                color: #171321;
+                font-size: 17px;
+                font-weight: 600;
+                background: #fca326;
+                cursor: pointer;
+            }
+        }
+
+        .box-msg {
+            padding: 15px 0;
+            border-bottom: 1px solid #F5F6FA;
+            color: #9B9B9B;
+            font-size: 10px;
+        }
+
+        .item {
+            padding: 14px 0 17px;
+            border-top: 1px solid #f7f7f7;
+            cursor: pointer;
+
+            .content {
+                width: 385px;
+
+                .item-title {
+                    margin-bottom: 10px;
+                    color: #252525;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                .item-content {
+                    margin-bottom: 12px;
+                    color: #606060;
+                    font-size: 10px;
+                }
+
+                .label {
+                    display: inline-block;
+                    margin-right: 8px;
+                    padding: 4px 8px 3px 10px;
+                    border-radius: 10px;
+                    color: #666666;
+                    font-size: 8px;
+                    background: #edeff2;
+                }
+            }
+
+            .cover {
+                width: 165px;
+                height: 93px;
+            }
+
+            .foot {
+                margin-top: 16px;
+                width: 100%;
+                color: #9B9B9B;
+                font-size: 10px;
+
+                .avatar {
+                    margin-right: 11px;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50px;
+                }
+
+                .date {
+                    margin-left: 10px;
+                    padding-left: 10px;
+                    line-height: 12px;
+                    border-left: 1px solid #9B9B9B;
+                }
+
+                .foot-right {
+                    font-size: 12px;
+
+                    .look {
+                        display: block;
+                        margin: 0 5px 2px;
+                        width: 15px;
+                        height: 9px;
+                    }
+
+                    .message {
+                        display: block;
+                        margin: 0 5px 0 18px;
+                        width: 12px;
+                        height: 11px;
+                    }
+
+                    .like {
+                        display: block;
+                        margin: 0 5px 2px 18px;
+                        width: 11px;
+                        height: 12px;
+                    }
+                }
+            }
+        }
+
+        .box-empty {
+            margin: 90px 0 68px;
+            color: #D7D7D7;
+            font-size: 10px;
+
+            img {
+                margin-bottom: 7px;
+                width: 44px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-search {
+        padding: 0 15px 20px;
+        min-height: calc(100vh - 70px);
+
+        .container {
+            padding: 20px 15px;
+        }
+
+        .box-content {
+            width: 100%;
+
+            .box-input {
+                border-radius: 17px;
+
+                .el-input {
+                    .el-input__inner {
+                        padding-left: 17px;
+                        font-size: 12px;
+
+                        &::placeholder {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                .btn-search {
+                    width: 80px;
+                    height: 32px;
+                    font-size: 12px;
+                }
+            }
+
+            .item {
+                padding: 14px 0 17px;
+                border-top: 1px solid #f7f7f7;
+                cursor: pointer;
+
+                .content {
+                    width: 100%;
+
+                    .label {
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .cover {
+                    width: 100%;
+                    height: 190px;
+                }
+            }
+        }
+    }
+}
