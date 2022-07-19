@@ -1,15 +1,34 @@
 <template>
-    
+<!-- hide 隐藏起来了 -->
+    <div class="tack-picture flex justify-evenly hidden">
+        <img
+            ref="faceImg"
+            :src="tackPic.url"
+            width="400"
+            height="500"
+        />
+        <canvas ref="faceCanvas" width="400" height="500"></canvas>
+    </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import * as FaceApi from 'face-api.js';
-@Component
+import FileUpload from '@/components/widget/FileUpload.vue';
+import { LoadingServiceOptions, ElLoadingComponent } from 'element-ui/types/loading';
+
+@Component({
+    components: {
+        FileUpload,
+    }
+})
 export default class TackPicture extends Vue {
+    @Prop({default: {}}) tackPic!: Record<string, string | boolean>;
+
+    private loading!: LoadingServiceOptions & ElLoadingComponent
 
     thisCancas: any = ''
 
-    thisContext: CanvasImageData | undefined
+    thisContext!: CanvasImageData | any
 
     thisVideo: any = ''
 
@@ -18,39 +37,179 @@ export default class TackPicture extends Vue {
         height: 600
     }
 
-    async beforeCreate() {
-        const loading = this.$elementLoading.service({
-            text: '正在加载模型~',
-        });
-        try {
-            // ssdMobilenetv1 tinyFaceDetector  mtcnn 三选一 人脸识别模型
-            Promise.race([
-                // 如果人脸识别放在本地目录的话，需要做服务端化～
-                await FaceApi.nets.tinyFaceDetector.loadFromUri('/middleware/weights'),
-                // await FaceApi.nets.tinyFaceDetector.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
-                // 识别人脸
-                await FaceApi.nets.faceRecognitionNet.loadFromUri('/middleware/weights'),
-                // await FaceApi.nets.faceRecognitionNet.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
-                // 识别表情
-                await FaceApi.nets.faceExpressionNet.loadFromUri('/middleware/weights'),
-                // await FaceApi.nets.faceExpressionNet.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
-                // 面部点位识别（68点）
-                // await FaceApi.nets.faceLandmark68Net.load('/weights');
-                // 识别脸部特征用于tiny算法
-                await FaceApi.nets.faceLandmark68TinyNet.loadFromUri('/middleware/weights'),
-                // await FaceApi.nets.faceLandmark68TinyNet.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
-                //  识别身体轮廓的算法
-                // await FaceApi.nets.tinyYolov2.loadFromUri('/weights');
-                // await FaceApi.loadTinyYolov2Model('/weights');
-            ]).finally(() => loading.close());
-        } catch(error: any) {
-            console.log(error);
-            loading.close();
+    @Watch('tackPic', {deep: true})
+    onAvaterChange(nVal: Record<string, string | boolean>) {
+        if (nVal.type) {
+            this.discernPic();
         }
     }
 
-    mounted() {
+    async created() {
+        this.onLoading('正在加载模型~');
+        try {
+            // ssdMobilenetv1 tinyFaceDetector  二选一 人脸识别模型
+            await Promise.race([
+                // 如果人脸识别放在本地目录的话，需要做服务端化～
+                // await FaceApi.nets.tinyFaceDetector.loadFromUri('/middleware/weights'),
+                // await FaceApi.nets.tinyFaceDetector.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
+                await FaceApi.nets.ssdMobilenetv1.loadFromUri('/middleware/weights'),
+                // 面部点位识别（68点）
+                await FaceApi.nets.faceLandmark68Net.loadFromUri('/middleware/weights'),
+
+                // 识别脸部特征用于tiny算法
+                await FaceApi.nets.faceLandmark68TinyNet.loadFromUri('/middleware/weights'),
+
+                // 性别年龄
+                await FaceApi.nets.ageGenderNet.loadFromUri('/middleware/weights'),
+
+                // 识别表情
+                await FaceApi.nets.faceExpressionNet.loadFromUri('/middleware/weights'),
+
+                // 识别人脸
+                await FaceApi.nets.faceRecognitionNet.loadFromUri('/middleware/weights'),
+
+            ]).then(() => {
+                this.thisCancas = (this.$refs.faceCanvas as HTMLCanvasElement).getContext('2d');
+                
+            }).finally(() => {
+                this.loading.close();
+            });
+        } catch(error: any) {
+            console.log(error);
+            this.loading.close();
+        }
+    }
+
+
+    mounted() {}
+
+    // 加载图片 调用api
+    discernPic() {
+        this.$nextTick(() => {
+            const img = new Image();
+            img.src = (this.$refs.faceImg as HTMLImageElement).src;
+            this.onLoading('识别中~');
+            img.onload = async () => {
+                await this.getFaceInterval(this.$refs.faceImg as HTMLImageElement);
+            }
+            img.onended =() => this.loading.close();
+        })
         
+    }
+
+    async getFaceInterval(dom: HTMLImageElement) {
+        const imgDom = dom;
+        console.log(dom);
+
+        // 指定识别器
+        const Ssd = new FaceApi.SsdMobilenetv1Options({ minConfidence: 0.8 });
+
+        // detectSingleFace 识别度最高的  detectAllFaces 识别全部 
+        const recognitionFace = await FaceApi.detectSingleFace(imgDom, Ssd)
+            .withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptor();
+
+        console.log(recognitionFace);
+
+        if (recognitionFace) {
+            const message = this.handleData(recognitionFace);
+            // console.log(this.handleData(recognitionFace));
+
+            this.$emit('update:tackPic', {
+                type: false,
+                message,
+                url: '',
+            });
+
+            // canvas 绘图
+            // this.thisCancas.drawImage(imgDom, 0, 0, imgDom.width, imgDom.height);
+
+            // // 匹配尺寸
+            // FaceApi.matchDimensions(imgDom, this.$refs.faceCanvas as HTMLCanvasElement)
+
+            // const displaySize = {width: imgDom.width, height: imgDom.height};
+
+            // // 如果显示的图像大小与原始图像不同，请调整检测到的框的大小
+            // const resizedDetections = FaceApi.resizeResults(recognitionFace, displaySize)
+            // // 将检测结果绘制到画布中
+            // FaceApi.draw.drawDetections(this.thisCancas, resizedDetections);
+            // // 面部表情
+            // FaceApi.draw.drawFaceExpressions(this.thisCancas, resizedDetections, 0.5);
+            // 68点位显示
+            // FaceApi.draw.drawFaceLandmarks(this.thisCancas, resizedDetections);
+        } else {
+            this.$message.warning('未识别出人脸, 无法判断年龄or性别~');
+        }
+
+        this.loading.close();
+
+        // base64
+        // const canvasBase64 = (this.$refs.faceCanvas as HTMLCanvasElement).toDataURL('image/jpeg');
+        // console.log(canvasBase64);
+
+    }
+
+    onLoading(val: string) {
+        const { loading } = this;
+        if (loading && (loading.text !== val)) {
+            this.loading.close();
+        }
+        this.loading = this.$elementLoading.service({
+            text: val,
+        })
+    }
+
+    handleData(faceDate: any) {
+
+        type dataType = Record<"name" | "value", string>;
+
+        enum expressionType {
+            angry = '生气',
+            disgusted = '厌烦',
+            fearful = '害怕',
+            happy = '快乐',
+            neutral = '暗淡',
+            sad = '难过',
+            surprised = '惊讶',
+        }
+
+        const face = JSON.parse(JSON.stringify(faceDate));
+        const { age, gender } = face;
+
+        const expression = Object.entries(face.expressions).reduce(
+            (pre: dataType | string, [curIndex, curVal]: any[]) => {
+                if (!pre) return {value: curVal, name: curIndex};
+                return (pre as dataType).value > curVal ? pre : {value: curVal, name: curIndex};
+            },
+            '',
+        )
+        return `年龄大约: ${
+                Math.floor(age)
+            }岁, 性别: ${
+                gender === 'male' ? "男" : "女"
+            }, 表情: ${
+                expressionType[(expression as dataType)?.name] || ''
+            }`;
+    }
+
+    // 转化文件类型输出
+    outPutFile() {
+        // base64 -> blob -> file
+        // base64
+        const canvasBase64 = (this.$refs.faceCanvas as HTMLCanvasElement).toDataURL('image/jpeg');
+        // console.log(canvasBase64);
+        const arr = canvasBase64.split(',');
+
+        // blob
+        const blobStr: any = window.atob(arr[1]);
+        let length = blobStr.length;
+        const u8Arr = new Uint8Array(blobStr.length);
+        while (length--) {
+            u8Arr[length] = blobStr.charCodeAt(length);
+        }
+        // canvas图片
+        // 生成 File数据流
+        const canvasPic = new File([u8Arr], String(new Date()), {type: 'image/jpeg'});
+        console.log(canvasPic);
     }
 
     // 调用摄像头权限

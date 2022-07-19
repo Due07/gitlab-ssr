@@ -19,8 +19,14 @@
                         <img src="~/assets/image/login/user-logo.png" alt="gitlab-user">
                     </template>
                 </FileUpload>
-                
-                <span class="picture-tips">上传头像</span>
+
+                <TackPicture v-show="tackPic" :tackPic.sync="tackPic"></TackPicture>
+
+                <span class="picture-tips block my-3">上传头像</span>
+                <el-button size="small" plain :disabled="!user.avatar.length" @click="onTackPic">
+                    识别人像
+                </el-button>
+                <span class="block mt-2" v-show="tackPic.message">识别结果: {{ tackPic.message }}</span>
             </el-form-item>
 
             <el-form-item label="昵称" class="required" prop="nickname">
@@ -84,7 +90,6 @@
             <button class="back_btn" @click="onBtn('home')">返回首页</button>
             <button class="login_btn" @click="onBtn('login')">立即登录</button>
         </div>
-        <!-- <TackPicture></TackPicture> -->
     </div>
 </template>
 
@@ -92,12 +97,12 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import FileUpload from '@/components/widget/FileUpload.vue';
 import { Form } from 'element-ui';
-// import TackPicture from './TackPicture.vue';
+import TackPicture from './TackPicture.vue';
 
 @Component({
     components: {
         FileUpload,
-        // TackPicture,
+        TackPicture,
     }
 })
 export default class UserInformation extends Vue {
@@ -111,11 +116,17 @@ export default class UserInformation extends Vue {
         provinceAndCity: [],
     }
 
-    private regionOptions:Record<string, any> = []
+    tackPic = {
+        type: false,
+        message: '',
+        url: '',
+    };
+
+    private regionOptions:Record<string, any> = [];
 
     private submitLoading = false;
 
-    private userType = true
+    private userType = false
 
     get rules() {
         return {
@@ -203,6 +214,14 @@ export default class UserInformation extends Vue {
         }
     }
 
+    onTackPic() {
+        this.tackPic = {
+            type: true,
+            url: this.user.avatar,
+            message: '',
+        }
+    }
+
     beforeDestroy() {
         // console.log(1);
     }
@@ -210,7 +229,7 @@ export default class UserInformation extends Vue {
 </script>
 <style lang="scss">
 .login-form.user-information {
-    min-height: 1087px;
+    min-height: 1280px;
 
     @media screen and (max-width: 768px) {
     

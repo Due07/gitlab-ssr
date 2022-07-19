@@ -88,19 +88,31 @@ export default class FileUploadComponent extends Vue {
             this.$message.error('图片过大');
         } else {
             this.$emit('fileChange', event.target.files);
+            console.log(event.target.files);
 
-            const res: any = await (new FileUpload())
-                .onUploadProgress((e: { loaded: number; total: number }) => {
-                    this.upload_progress = (e.loaded / e.total).toFixed(2);
-                    this.upload_progress = parseInt(`${this.upload_progress * 100}`, 10);
-                })
-                // 压缩
-                // .imgOptions(this.options)
-                .uploadStart(event.target.files);
-            for (const file of res) {
-                this.$emit('input', file.url);
-                this.$emit('type', file.type);
+            // 实现本地预览 FileReader-> 获取文件状态
+            const reader = new FileReader();
+            reader.onload = (e: any) => {
+                if (reader.readyState === 2) {
+                    // result 为base64
+                    this.$emit('input', e.target.result);
+                }
             }
+            // 图片文件后, 即使预览图片 base64
+            reader.readAsDataURL(event.target.files[0]);
+
+            // const res: any = await (new FileUpload())
+            //     .onUploadProgress((e: { loaded: number; total: number }) => {
+            //         this.upload_progress = (e.loaded / e.total).toFixed(2);
+            //         this.upload_progress = parseInt(`${this.upload_progress * 100}`, 10);
+            //     })
+            //     // 压缩
+            //     // .imgOptions(this.options)
+            //     .uploadStart(event.target.files);
+            // for (const file of res) {
+            //     this.$emit('input', file.url);
+            //     this.$emit('type', file.type);
+            // }
         }
         event.target.value = '';
         this.input.disabled = false;

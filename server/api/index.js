@@ -21,4 +21,13 @@ router.get('/middleware/weights/:file', async (ctx, next) => {
     }
 }, koaStatic('./'));
 
+// 访问图片
+router.get(/^\/assets\/image\/+[A-Za-z0-9\/]+([A-Za-z0-9]{2,64})+(.png|.jpeg|.jpg)$/i,
+    async (ctx, next) => {
+        console.log(ctx.path);
+        await next();
+    },
+    koaStatic('./'),
+);
+
 module.exports = router;
