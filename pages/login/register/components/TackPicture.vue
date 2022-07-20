@@ -86,9 +86,9 @@ export default class TackPicture extends Vue {
     // 加载图片 调用api
     discernPic() {
         this.$nextTick(() => {
+            this.onLoading('识别中~');
             const img = new Image();
             img.src = (this.$refs.faceImg as HTMLImageElement).src;
-            this.onLoading('识别中~');
             img.onload = async () => {
                 await this.getFaceInterval(this.$refs.faceImg as HTMLImageElement);
             }
